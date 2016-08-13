@@ -36,7 +36,6 @@ try {
     }
 	else if(stripos($update->message->text, 'perotto') !== false)
     {
-    	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
     	$response = $client->sendSticker([
     		'chat_id' => $update->message->chat->id,
     		'sticker' => "BQADBAADBgADs0NYBytirq7IWXiiAg" //perotto muscoloso
