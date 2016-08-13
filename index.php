@@ -40,7 +40,6 @@ try {
     		'chat_id' => $update->message->chat->id,
     		'sticker' => "BQADBAADBgADs0NYBytirq7IWXiiAg" //perotto muscoloso
     		]);
-		echo $response
     }
 	else if(stripos($update->message->text, 'suonano alla porta') !== false || stripos($update->message->text, 'campanello') !== false)
     {
@@ -48,7 +47,6 @@ try {
     		'chat_id' => $update->message->chat->id,
     		'voice' => "AwADBAADYgADB4n0BQadQWxMeEb6Ag" //blublublu1
     		]);
-		echo $response
     }
 	/*
     else
