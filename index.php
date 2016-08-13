@@ -46,7 +46,7 @@ try {
     {
     	$response = $client->sendVoice([
     		'chat_id' => $update->message->chat->id,
-    		'voice' => "AwADBAADYQADB4n0BayoCDRUdNSsAg" //blublublu1
+    		'voice' => "AwADBAADYgADB4n0BQadQWxMeEb6Ag" //blublublu1
     		]);
 
     }
