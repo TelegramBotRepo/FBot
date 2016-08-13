@@ -19,7 +19,7 @@
 */
 require 'vendor/autoload.php';
 
-$client = new Zelenin\Telegram\Bot\Api(''); // Set your access token
+$client = new Zelenin\Telegram\Bot\Api('265001835:AAE6giEUaEwE8TdY38DPJ-NACy6roZL9T_Q'); // Set your access token
 $url = ''; // URL RSS feed
 $update = json_decode(file_get_contents('php://input'));
 
@@ -34,33 +34,24 @@ try {
         	'text' => "You can send email to : Kasra@madadipouya.com"
      	]);
     }
-    else if($update->message->text == '/help')
+	else if(stripos($update->message->text, 'perotto') !== false)
     {
     	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
-    	$response = $client->sendMessage([
+    	$response = $client->sendSticker([
     		'chat_id' => $update->message->chat->id,
-    		'text' => "List of commands :\n /email -> Get email address of the owner \n /latest -> Get latest posts of the blog 
-    		/help -> Shows list of available commands"
+    		'sticker' => "BQADBAADBgADs0NYBytirq7IWXiiAg" //perotto muscoloso
     		]);
 
     }
-    else if($update->message->text == '/latest')
+	else if(stripos($update->message->text, 'suonano alla porta') !== false || stripos($update->message->text, 'campanello') !== false)
     {
-    		Feed::$cacheDir 	= __DIR__ . '/cache';
-			Feed::$cacheExpire 	= '5 hours';
-			$rss 		= Feed::loadRss($url);
-			$items 		= $rss->item;
-			$lastitem 	= $items[0];
-			$lastlink 	= $lastitem->link;
-			$lasttitle 	= $lastitem->title;
-			$message = $lasttitle . " \n ". $lastlink;
-			$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
-			$response = $client->sendMessage([
-					'chat_id' => $update->message->chat->id,
-					'text' => $message
-				]);
+    	$response = $client->sendVoice([
+    		'chat_id' => $update->message->chat->id,
+    		'voice' => "AwADBAADYQADB4n0BayoCDRUdNSsAg" //blublublu1
+    		]);
 
     }
+	/*
     else
     {
     	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
@@ -69,6 +60,7 @@ try {
     		'text' => "Invalid command, please use /help to get list of available commands"
     		]);
     }
+	*/
 
 } catch (\Zelenin\Telegram\Bot\NotOkException $e) {
 
