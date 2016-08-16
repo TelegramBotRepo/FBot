@@ -29,8 +29,7 @@ $dbname = "sql7131643";
 $password = "xuqFSSyUd6";
 
 // Create connection
-$conn = mysql_connect($servername, $username, $password);
-mysql_select_db($dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 $update = json_decode(file_get_contents('php://input'));
 
@@ -40,7 +39,6 @@ try {
 	///////////////////////////////////////////////////////////SPAM EVENT//////////////////////////
 	
 	$sql = "SELECT lastUserId, spamCounter FROM SpamTable";
-	
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) {
