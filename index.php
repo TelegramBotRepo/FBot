@@ -44,7 +44,7 @@ try {
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			$spamCounter = $row["spamCounter"];
+			$spamCounter = intval($row["spamCounter"]);
 			$lastSender = $row["lastUserId"];
 		}
 	}
