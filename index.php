@@ -43,9 +43,9 @@ try {
     }
 	else if( stripos($update->message->text, 'campanello') !== false)
     {
-    	$response = $client->sendVoice([
+    	$response = $client->sendAudio([
     		'chat_id' => $update->message->chat->id,
-    		'voice' => "media/t_voice529247392294240311.ogg" //blublublu1
+    		'audio' => "media/t_voice529247392294240311.ogg" //blublublu1
     		]);
     }
 	/*
