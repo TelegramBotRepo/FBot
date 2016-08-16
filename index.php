@@ -48,8 +48,8 @@ try {
 			$lastSender = $row["lastUserId"];
 		}
 	}
-	
-	if($update->message->from->id == $lastSender && strlen($update->message->text) > 0)
+	echo $update->message->text;
+	if($update->message->from->id == $lastSender && strlen($update->message->text) > 1)
 	{
 		if($spamCounter>=3)
 		{
