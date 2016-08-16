@@ -55,9 +55,9 @@ try {
 		{
 			$response = $client->sendSticker([
 				'chat_id' => $update->message->chat->id,
-				'sticker' => "BQADBAADHgADs0NYBzqC4yBl75iTAg" //spam
+				'sticker' => "BQADBAADHAADs0NYB8lR4Urhkp5LAg" //spam
     		]);
-			$spamCounter=0;
+			
 		}else{
 			$spamCounter++;
 		}
