@@ -41,9 +41,6 @@ try {
 	
 	$sql = "SELECT lastUserId, spamCounter FROM SpamTable";
 	$result = mysql_query($sql);
-	// get result count:
-	$count = mysql_num_rows($result);
-	 
 	// fetch results:
 	while ($row = mysql_fetch_assoc($result)) {
 		$spamCounter = $row["spamCounter"];
@@ -65,7 +62,7 @@ try {
 		$spamCounter=0;
 	}
 	$lastSender = $update->message->from->id;
-	$sql = "UPDATE SpamTable SET lastUserId='"+$lastSender+"', spamCounter="+$spamCounter+"";
+	$sql = "UPDATE SpamTable SET lastUserId='"+$lastSender+"', spamCounter="+$spamCounter;
 	mysql_query($sql);
 	
 	
