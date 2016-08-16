@@ -69,7 +69,7 @@ try {
 	$sql = "UPDATE SpamTable SET lastUserId='$lastSender', spamCounter=$spamCounter WHERE 1";
 	
 	$conn->query($sql);
-	$conn->close();
+	
 	
 	////////////////////////////////////////////////////////////////////////////////////////////STICKERS
 	
@@ -153,6 +153,24 @@ try {
     		]);	
     }
 	
+	///////////////////////////////////////////////////////////////////////////////////TESTI
+	
+	else if(stripos($update->message->text, 'mirco') !== false || stripos($update->message->text, 'triste') !== false)
+    {
+		$sql = "SELECT body FROM Battute ORDER BY rand() LIMIT 1";
+		$result = $conn->query($sql);
+
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				$response = $client->sendMessage([
+					'chat_id' => $update->message->chat->id,
+					'text' => $row["body"] 
+				]);	 
+			}
+		}
+    }
+	$conn->close();
 	
 } catch (\Zelenin\Telegram\Bot\NotOkException $e) {
 
