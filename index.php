@@ -30,7 +30,7 @@ $password = "xuqFSSyUd6";
 
 // Create connection
 $conn = mysql_connect($servername, $username, $password);
-mysql_select_db($dbname);
+
 
 $update = json_decode(file_get_contents('php://input'));
 
