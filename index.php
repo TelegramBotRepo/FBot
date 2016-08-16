@@ -36,17 +36,18 @@ $update = json_decode(file_get_contents('php://input'));
 
 //your app
 try {
-	
+	$spamCounter = 0;
+	$lastSender = "";
 	///////////////////////////////////////////////////////////SPAM EVENT//////////////////////////
-	
+	/*
 	$sql = "SELECT lastUserId, spamCounter FROM SpamTable";
 	$result = mysql_query($sql);
 	// fetch results:
 	while ($row = mysql_fetch_assoc($result)) {
 		$spamCounter = $row["spamCounter"];
-			$lastSender = $row["lastUserId"];
+		$lastSender = $row["lastUserId"];
 	}
-	
+	*/
 	if($update->message->from->id == $lastSender)
 	{
 		if($spamCounter>=3)
@@ -62,8 +63,8 @@ try {
 		$spamCounter=0;
 	}
 	$lastSender = $update->message->from->id;
-	$sql = "UPDATE SpamTable SET lastUserId='"+$lastSender+"', spamCounter="+$spamCounter;
-	mysql_query($sql);
+	//$sql = "UPDATE SpamTable SET lastUserId='"+$lastSender+"', spamCounter="+$spamCounter;
+	//mysql_query($sql);
 	
 	
     if($update->message->text == '/email')
