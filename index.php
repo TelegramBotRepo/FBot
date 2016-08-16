@@ -30,25 +30,29 @@ $password = "xuqFSSyUd6";
 
 // Create connection
 $conn = mysql_connect($servername, $username, $password);
-if (!$conn) {
-    die('Could not connect: ' . mysql_error());
+mysql_select_db($dbname);
 
 $update = json_decode(file_get_contents('php://input'));
 
 //your app
 try {
-	$spamCounter = 0;
-	$lastSender = "";
+	
 	///////////////////////////////////////////////////////////SPAM EVENT//////////////////////////
-	/*
+	
 	$sql = "SELECT lastUserId, spamCounter FROM SpamTable";
-	$result = mysql_query($sql);
-	// fetch results:
-	while ($row = mysql_fetch_assoc($result)) {
-		$spamCounter = $row["spamCounter"];
-		$lastSender = $row["lastUserId"];
+	
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		// output data of each row
+		while($row = $result->fetch_assoc()) {
+			$spamCounter = $row["spamCounter"];
+			$lastSender = $row["lastUserId"];
+			
+			echo $lastSender;
+		}
 	}
-	*/
+	
 	if($update->message->from->id == $lastSender)
 	{
 		if($spamCounter>=3)
@@ -64,8 +68,9 @@ try {
 		$spamCounter=0;
 	}
 	$lastSender = $update->message->from->id;
-	//$sql = "UPDATE SpamTable SET lastUserId='"+$lastSender+"', spamCounter="+$spamCounter;
-	//mysql_query($sql);
+	$sql = "UPDATE SpamTable SET lastUserId='"+$lastSender+"', spamCounter="+$spamCounter+"";
+	$conn->query($sql);
+	$conn->close();
 	
 	
     if($update->message->text == '/email')
