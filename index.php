@@ -173,6 +173,13 @@ try {
 					'text' => $body
 				]);	 
     }
+	else if(stripos($update->message->text, 'vado') !== false)
+    {	
+		$response = $client->sendMessage([
+					'chat_id' => $update->message->chat->id,
+					'text' => "Ma dove vai?? Sono solo le 18..."
+				]);	 
+    }
 	$conn->close();
 	
 } catch (\Zelenin\Telegram\Bot\NotOkException $e) {
