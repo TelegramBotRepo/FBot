@@ -45,7 +45,7 @@ try {
     {
     	$response = $client->sendVoice([
     		'chat_id' => $update->message->chat->id,
-    		'voice' => "AwADBAADYgADB4n0BQadQWxMeEb6Ag" //blublublu1
+    		'voice' => "media/t_voice529247392294240311.ogg" //blublublu1
     		]);
     }
 	/*
