@@ -57,8 +57,11 @@ try {
 				'chat_id' => $update->message->chat->id,
 				'sticker' => "BQADBAADHgADs0NYBzqC4yBl75iTAg" //spam
     		]);
+			$spamCounter=0;
+		}else{
+			$spamCounter++;
 		}
-		$spamCounter++;
+		
 	}
 	else{
 		$spamCounter=0;
