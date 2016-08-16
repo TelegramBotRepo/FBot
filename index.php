@@ -63,7 +63,7 @@ try {
 	else{
 		$spamCounter=0;
 	}
-	$lastSender = $update->message->from->id;
+	$lastSender = 'nuovo';
 
 	if($lastSender){
 		$statement = $mysqli->prepare("UPDATE SpamTable SET lastUserId=?, spamCounter=?");
