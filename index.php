@@ -25,7 +25,28 @@ $update = json_decode(file_get_contents('php://input'));
 
 //your app
 try {
-
+	
+	///////////////////////////////////////////////////////////SPAM EVENT//////////////////////////
+	$spamCounter = 0;
+	$lastSender = "";
+	
+	if($update->message->from->id == $lastSender)
+	{
+		$spamCounter++;
+		if($spamCounter>=3)
+		{
+			$response = $client->sendSticker([
+				'chat_id' => $update->message->chat->id,
+				'sticker' => "BQADBAADHgADs0NYBzqC4yBl75iTAg" //spam
+    		]);
+		}
+	}
+	else{
+		$spamCounter=0;
+	}
+	$lastSender = $update->message->from->id;
+	
+	
     if($update->message->text == '/email')
     {
     	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
@@ -41,13 +62,22 @@ try {
     		'sticker' => "BQADBAADBgADs0NYBytirq7IWXiiAg" //perotto muscoloso
     		]);
     }
-	else if( stripos($update->message->text, 'campanello') !== false)
+	else if(stripos($update->message->text, 'niente da fare') !== false)
     {
-    	$response = $client->sendAudio([
+    	$response = $client->sendSticker([
     		'chat_id' => $update->message->chat->id,
-    		'audio' => "media/t_voice529247392294240311.ogg" //blublublu1
+    		'sticker' => "BQADBAADHgADs0NYBzqC4yBl75iTAg" //sto lavorando
     		]);
     }
+	else if( stripos($update->message->text, 'campanello') !== false)
+    {
+    	$response = $client->sendVoice([
+    		'chat_id' => $update->message->chat->id,
+    		'voice' => "media/t_voice529247392294240311.ogg" //blublublu1
+    		]);
+    }
+	
+	
 	/*
     else
     {
