@@ -46,8 +46,6 @@ try {
 		while($row = $result->fetch_assoc()) {
 			$spamCounter = $row["spamCounter"];
 			$lastSender = $row["lastUserId"];
-			
-			echo $lastSender;
 		}
 	}
 	
@@ -66,7 +64,7 @@ try {
 		$spamCounter=0;
 	}
 	$lastSender = $update->message->from->id;
-	$sql = "UPDATE SpamTable SET lastUserId='"+$lastSender+"', spamCounter="+$spamCounter+"";
+	$sql = "UPDATE SpamTable SET lastUserId=$lastSender, spamCounter=$spamCounter;
 	$conn->query($sql);
 	$conn->close();
 	
