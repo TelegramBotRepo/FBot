@@ -248,7 +248,10 @@ try {
 		stripos($update->message->text, 'explorer') !== false ||
 		stripos($update->message->text, 'chrome') !== false ||
 		stripos($update->message->text, 'cache') !== false ||
-		stripos($update->message->text, 'memory') !== false 
+		stripos($update->message->text, 'memory') !== false ||
+		stripos($update->message->text, 'wifi') !== false ||
+		stripos($update->message->text, 'password') !== false ||
+		stripos($update->message->text, 'query') !== false 
 		)
     {	
 		$response = $client->sendMessage([
