@@ -235,12 +235,12 @@ try {
 		stripos($update->message->text, 'computer') !== false ||
 		stripos($update->message->text, 'cpu') !== false ||
 		stripos($update->message->text, 'server') !== false ||
-		stripos($update->message->text, 'nas') !== false ||
+		stripos($update->message->text, ' nas') !== false ||
 		stripos($update->message->text, 'database') !== false ||
 		stripos($update->message->text, 'ram') !== false ||
 		stripos($update->message->text, 'hard') !== false ||
 		stripos($update->message->text, 'ssd') !== false ||
-		stripos($update->message->text, 'giga') !== false ||
+		stripos($update->message->text, 'giga ') !== false ||
 		stripos($update->message->text, 'db') !== false ||
 		stripos($update->message->text, 'processore') !== false ||
 		stripos($update->message->text, 'internet') !== false ||
