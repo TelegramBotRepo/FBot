@@ -29,7 +29,8 @@ $dbname = "sql7131643";
 $password = "xuqFSSyUd6";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = mysql_connect($servername, $username, $password);
+mysql_select_db($dbname);
 
 $update = json_decode(file_get_contents('php://input'));
 
@@ -39,14 +40,14 @@ try {
 	///////////////////////////////////////////////////////////SPAM EVENT//////////////////////////
 	
 	$sql = "SELECT lastUserId, spamCounter FROM SpamTable";
-	$result = $conn->query($sql);
-
-	if ($result->num_rows > 0) {
-		// output data of each row
-		while($row = $result->fetch_assoc()) {
-			$spamCounter = $row["spamCounter"];
+	$result = mysql_query($sql);
+	// get result count:
+	$count = mysql_num_rows($result);
+	 
+	// fetch results:
+	while ($row = mysql_fetch_assoc($result)) {
+		$spamCounter = $row["spamCounter"];
 			$lastSender = $row["lastUserId"];
-		}
 	}
 	
 	if($update->message->from->id == $lastSender)
@@ -65,8 +66,7 @@ try {
 	}
 	$lastSender = $update->message->from->id;
 	$sql = "UPDATE SpamTable SET lastUserId='"+$lastSender+"', spamCounter="+$spamCounter+"";
-	$conn->query($sql);
-	$conn->close();
+	mysql_query($sql);
 	
 	
     if($update->message->text == '/email')
