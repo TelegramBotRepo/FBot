@@ -68,7 +68,7 @@ try {
 	if($lastSender){
 		$statement = $mysqli->prepare("UPDATE SpamTable SET lastUserId=?, spamCounter=?");
 		//bind parameters for markers, where (s = string, i = integer, d = double,  b = blob)
-		$statement->bind_param('ss', $lastSender, $spamCounter);
+		$statement->bind_param('si', $lastSender, $spamCounter);
 		$results =  $statement->execute();
 	}
 	
