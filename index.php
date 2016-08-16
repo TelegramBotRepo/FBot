@@ -71,7 +71,7 @@ try {
 	$conn->query($sql);
 	$conn->close();
 	
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////STICKERS
 	
     if(stripos($update->message->text, 'perotto') !== false)
     {
@@ -116,9 +116,11 @@ try {
     		'sticker' => "BQADBAADMAADs0NYB3sXUeq5oWLtAg" //ciao ragazzi
     		]);
     }
+	
+	////////////////////////////////////////////////////////////////////////////////////////VIDEO
 	else if(stripos($update->message->text, 'accompagnare') !== false)
     {
-		$index = intVal(rand(1,2));
+		$index = intVal(rand(1,5));
 		
 		switch($index){
 			case 1:
@@ -127,28 +129,31 @@ try {
 			case 2:
 				$text = "https://www.youtube.com/watch?v=Om2E5dcevLM"; //intervista
 				break;
-				
+			case 3:
+				$text = "https://www.youtube.com/watch?v=TjAINxud8uM"; //giapponese
+				break;
+			case 4:
+				$text = "https://www.youtube.com/watch?v=z9tyjOB4r1I"; //chef toni
+				break;
+			case 5:
+				$text = "https://www.youtube.com/watch?v=W9QIE1OytWg"; //original
+				break;		
 		}
-		
 		
     	$response = $client->sendMessage([
     		'chat_id' => $update->message->chat->id,
     		'text' => $text 
-    		]);
-			
-			
+    		]);	
     }
-	/*
-	else if( stripos($update->message->text, 'campanello') !== false)
+	else if(stripos($update->message->text, 'becco') !== false || stripos($update->message->text, 'becchi') !== false || stripos($update->message->text, 'vincitore') !== false)
     {
-    	$response = $client->sendVoice([
+    	$response = $client->sendMessage([
     		'chat_id' => $update->message->chat->id,
-    		'voice' => "media/t_voice529247392294240311.ogg" //blublublu1
-    		]);
+    		'text' => "https://www.youtube.com/watch?v=Jo07YIB3HBU" 
+    		]);	
     }
-	*/
 	
-
+	
 } catch (\Zelenin\Telegram\Bot\NotOkException $e) {
 
     //echo error message ot log it
