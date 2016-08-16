@@ -137,6 +137,13 @@ try {
     		'sticker' => "BQADBAADFAADs0NYB3egiWxpZ_zLAg" //coffee
     		]);
     }
+	else if(stripos($update->message->text, 'aiuto') !== false  || stripos($update->message->text, 'alessio') !== false || stripos($update->message->text, 'una mano') !== false)
+    {
+    	$response = $client->sendSticker([
+    		'chat_id' => $update->message->chat->id,
+    		'sticker' => "BQADBAADKgADs0NYB4q4U1oCTvRXAg" //need him
+    		]);
+    }
 	
 	////////////////////////////////////////////////////////////////////////////////////////VIDEO
 	else if(stripos($update->message->text, 'accompagnare') !== false)
