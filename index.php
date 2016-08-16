@@ -64,8 +64,12 @@ try {
 		$spamCounter=0;
 	}
 	$lastSender = $update->message->from->id;
-	$sql = "UPDATE SpamTable SET lastUserId=$lastSender, spamCounter=$spamCounter;
-	$conn->query($sql);
+
+	$statement = $mysqli->prepare("UPDATE SpamTable SET lastUserId=?, spamCounter=?");
+	//bind parameters for markers, where (s = string, i = integer, d = double,  b = blob)
+	$statement->bind_param('si', $lastSender, $spamCounter);
+	$results =  $statement->execute();
+
 	$conn->close();
 	
 	
