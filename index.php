@@ -50,7 +50,7 @@ try {
 	}
 	if($update->message->from->id == $lastSender)
 	{
-		if($spamCounter>=3)
+		if($spamCounter>=2)
 		{
 			$response = $client->sendSticker([
 				'chat_id' => $update->message->chat->id,
