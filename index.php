@@ -41,7 +41,7 @@ try {
     		'sticker' => "BQADBAADBgADs0NYBytirq7IWXiiAg" //perotto muscoloso
     		]);
     }
-	else if(stripos($update->message->text, 'suonano alla porta') !== false || stripos($update->message->text, 'campanello') !== false)
+	else if( stripos($update->message->text, 'campanello') !== false)
     {
     	$response = $client->sendVoice([
     		'chat_id' => $update->message->chat->id,
