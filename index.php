@@ -48,8 +48,7 @@ try {
 			$lastSender = $row["lastUserId"];
 		}
 	}
-	echo $update->message->text;
-	if($update->message->from->id == $lastSender && strlen($update->message->text) > 1)
+	if($update->message->from->id == $lastSender)
 	{
 		if($spamCounter>=3)
 		{
@@ -67,7 +66,6 @@ try {
 		$spamCounter=0;
 	}
 	$lastSender = $update->message->from->id;
-	$lastSender = $update->message->text;
 	$sql = "UPDATE SpamTable SET lastUserId='$lastSender', spamCounter=$spamCounter WHERE 1";
 	
 	$conn->query($sql);
@@ -90,6 +88,7 @@ try {
     		'sticker' => "BQADBAADHgADs0NYBzqC4yBl75iTAg" //sto lavorando
     		]);
     }
+	/*
 	else if( stripos($update->message->text, 'campanello') !== false)
     {
     	$response = $client->sendVoice([
@@ -97,7 +96,7 @@ try {
     		'voice' => "media/t_voice529247392294240311.ogg" //blublublu1
     		]);
     }
-	
+	*/
 	
 
 } catch (\Zelenin\Telegram\Bot\NotOkException $e) {
