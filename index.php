@@ -259,6 +259,13 @@ try {
 					'text' => "Caspita, tu devi essere un Hacker!"
 				]);	 
     }
+	else if(stripos($update->message->text, 'ux') !== false || stripos($update->message->text, 'experience') !== false || stripos($update->message->text, 'iannas') !== false)
+    {	
+		$response = $client->sendMessage([
+					'chat_id' => $update->message->chat->id,
+					'text' => "Prima regola della User Experience: Non parlare mai della User Experience."
+				]);	 
+    }
 
 	$conn->close();
 	
