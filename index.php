@@ -29,8 +29,9 @@ $dbname = "sql7131643";
 $password = "xuqFSSyUd6";
 
 // Create connection
-//$conn = mysql_connect($servername, $username, $password);
-
+$conn = mysql_connect($servername, $username, $password);
+if (!$conn) {
+    die('Could not connect: ' . mysql_error());
 
 $update = json_decode(file_get_contents('php://input'));
 
