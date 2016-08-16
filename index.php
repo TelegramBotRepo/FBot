@@ -64,7 +64,7 @@ try {
 		$spamCounter=0;
 	}
 	$lastSender = $update->message->from->id;
-
+	echo $lastSender;
 	
 
 	$conn->close();
