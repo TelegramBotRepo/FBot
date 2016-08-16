@@ -116,6 +116,28 @@ try {
     		'sticker' => "BQADBAADMAADs0NYB3sXUeq5oWLtAg" //ciao ragazzi
     		]);
     }
+	else if(stripos($update->message->text, 'accompagnare') !== false)
+    {
+		$index = intVal(rand(1,2));
+		
+		switch($index){
+			case 1:
+				$text = "https://www.youtube.com/watch?v=Eyc2II0k3DE"; //batman
+				break;
+			case 2:
+				$text = "https://www.youtube.com/watch?v=Om2E5dcevLM"; //intervista
+				break;
+				
+		}
+		
+		
+    	$response = $client->sendMessage([
+    		'chat_id' => $update->message->chat->id,
+    		'text' => $text 
+    		]);
+			
+			
+    }
 	/*
 	else if( stripos($update->message->text, 'campanello') !== false)
     {
