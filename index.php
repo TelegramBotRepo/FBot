@@ -73,7 +73,7 @@ try {
 	
 	////////////////////////////////////////////////////////////////////////////////////////////STICKERS
 	
-    if(stripos($update->message->text, 'perotto') !== false)
+    if(stripos($update->message->text, 'perotto') !== false || stripos($update->message->text, 'minimo') !== false)
     {
 		//$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
     	$response = $client->sendSticker([
@@ -114,6 +114,27 @@ try {
     	$response = $client->sendSticker([
     		'chat_id' => $update->message->chat->id,
     		'sticker' => "BQADBAADMAADs0NYB3sXUeq5oWLtAg" //ciao ragazzi
+    		]);
+    }
+	else if(stripos($update->message->text, 'dio') !== false)
+    {
+    	$response = $client->sendSticker([
+    		'chat_id' => $update->message->chat->id,
+    		'sticker' => "BQADBAADFgADs0NYB9Ni7NpyEnj1Ag" //gesu
+    		]);
+    }
+	else if(stripos($update->message->text, 'incazz') !== false)
+    {
+    	$response = $client->sendSticker([
+    		'chat_id' => $update->message->chat->id,
+    		'sticker' => "BQADBAADGgADs0NYBxXUnFUZnhMbAg" //keepcalm
+    		]);
+    }
+	else if(stripos($update->message->text, 'pausa') !== false)
+    {
+    	$response = $client->sendSticker([
+    		'chat_id' => $update->message->chat->id,
+    		'sticker' => "BQADBAADFAADs0NYB3egiWxpZ_zLAg" //coffee
     		]);
     }
 	
@@ -178,6 +199,27 @@ try {
 		$response = $client->sendMessage([
 					'chat_id' => $update->message->chat->id,
 					'text' => "Ma dove vai?? Sono solo le 18..."
+				]);	 
+    }
+	else if(stripos($update->message->text, 'ancora in ufficio') !== false)
+    {	
+		$response = $client->sendMessage([
+					'chat_id' => $update->message->chat->id,
+					'text' => "Prenoto da Yury il Magnifico?"
+				]);	 
+    }
+	else if(stripos($update->message->text, 'release') !== false)
+    {	
+		$response = $client->sendMessage([
+					'chat_id' => $update->message->chat->id,
+					'text' => "Release?? Io prendo ferie..."
+				]);	 
+    }
+	else if(stripos($update->message->text, 'fretta') !== false)
+    {	
+		$response = $client->sendMessage([
+					'chat_id' => $update->message->chat->id,
+					'text' => "Non ti preoccupare, andiamo in produzione ieri..."
 				]);	 
     }
 	$conn->close();
