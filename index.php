@@ -21,8 +21,15 @@ require 'vendor/autoload.php';
 
 $client = new Zelenin\Telegram\Bot\Api('265001835:AAE6giEUaEwE8TdY38DPJ-NACy6roZL9T_Q'); // Set your access token
 $url = ''; // URL RSS feed
-$spamCounter = 0;
-$lastSender = "";
+
+
+$servername = "sql7.freemysqlhosting.net";
+$username = "sql7131643";
+$dbname = "sql7131643";
+$password = "xuqFSSyUd6";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 $update = json_decode(file_get_contents('php://input'));
 
@@ -31,10 +38,19 @@ try {
 	
 	///////////////////////////////////////////////////////////SPAM EVENT//////////////////////////
 	
+	$sql = "SELECT lastUserId, spamCounter FROM SpamTable";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		// output data of each row
+		while($row = $result->fetch_assoc()) {
+			$spamCounter = $row["spamCounter"];
+			$lastSender = $row["lastUserId"];
+		}
+	}
 	
 	if($update->message->from->id == $lastSender)
 	{
-		$spamCounter++;
 		if($spamCounter>=3)
 		{
 			$response = $client->sendSticker([
@@ -42,11 +58,15 @@ try {
 				'sticker' => "BQADBAADHgADs0NYBzqC4yBl75iTAg" //spam
     		]);
 		}
+		$spamCounter++;
 	}
 	else{
 		$spamCounter=0;
 	}
 	$lastSender = $update->message->from->id;
+	$sql = "UPDATE SpamTable SET lastUserId='"+$lastSender+"', spamCounter="+$spamCounter+"";
+	$conn->query($sql);
+	$conn->close();
 	
 	
     if($update->message->text == '/email')
