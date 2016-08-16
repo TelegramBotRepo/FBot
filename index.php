@@ -49,7 +49,7 @@ try {
 		}
 	}
 	
-	if($update->message->from->id == $lastSender)
+	if($update->message->from->id == $lastSender && strlen($update->message->text) > 0)
 	{
 		if($spamCounter>=3)
 		{
@@ -72,17 +72,11 @@ try {
 	$conn->query($sql);
 	$conn->close();
 	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-    if($update->message->text == '/email')
+    if(stripos($update->message->text, 'perotto') !== false)
     {
-    	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
-    	$response = $client->sendMessage([
-        	'chat_id' => $update->message->chat->id,
-        	'text' => "You can send email to : Kasra@madadipouya.com"
-     	]);
-    }
-	else if(stripos($update->message->text, 'perotto') !== false)
-    {
+		//$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
     	$response = $client->sendSticker([
     		'chat_id' => $update->message->chat->id,
     		'sticker' => "BQADBAADBgADs0NYBytirq7IWXiiAg" //perotto muscoloso
@@ -104,16 +98,6 @@ try {
     }
 	
 	
-	/*
-    else
-    {
-    	$response = $client->sendChatAction(['chat_id' => $update->message->chat->id, 'action' => 'typing']);
-    	$response = $client->sendMessage([
-    		'chat_id' => $update->message->chat->id,
-    		'text' => "Invalid command, please use /help to get list of available commands"
-    		]);
-    }
-	*/
 
 } catch (\Zelenin\Telegram\Bot\NotOkException $e) {
 
