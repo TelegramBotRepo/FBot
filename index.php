@@ -44,7 +44,7 @@ try {
 	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			$spamCounter = intval($row["spamCounter"]);
+			$spamCounter = intVal($row["spamCounter"]);
 			$lastSender = $row["lastUserId"];
 		}
 	}
@@ -63,16 +63,10 @@ try {
 	else{
 		$spamCounter=0;
 	}
-	$lastSender = 'nuovo';
-
-	if($lastSender){
-		$statement = $mysqli->prepare("UPDATE SpamTable SET lastUserId=?, spamCounter=? WHERE 1");
-		//bind parameters for markers, where (s = string, i = integer, d = double,  b = blob)
-		$statement->bind_param('ss', $lastSender, $spamCounter);
-		$results =  $statement->execute();
-	}
+	$lastSender = $update->message->from->id;
+	$sql = "UPDATE SpamTable SET lastUserId=$lastSender, spamCounter=$spamCounter";
 	
-
+	$conn->query($sql);
 	$conn->close();
 	
 	
