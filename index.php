@@ -88,6 +88,34 @@ try {
     		'sticker' => "BQADBAADHgADs0NYBzqC4yBl75iTAg" //sto lavorando
     		]);
     }
+	else if(stripos($update->message->text, 'grazie') !== false || stripos($update->message->text, 'thank') !== false)
+    {
+    	$response = $client->sendSticker([
+    		'chat_id' => $update->message->chat->id,
+    		'sticker' => "BQADBAADMgADs0NYB7gtnTy9Pv8QAg" //grazie di tutto
+    		]);
+    }
+	else if(stripos($update->message->text, 'campagna') !== false)
+    {
+    	$response = $client->sendSticker([
+    		'chat_id' => $update->message->chat->id,
+    		'sticker' => "BQADBAADDgADs0NYB96mVjH8jmEkAg" //e
+    		]);
+    }
+	else if(stripos($update->message->text, 'può fare') !== false || stripos($update->message->text, 'puo fare') !== false)
+    {
+    	$response = $client->sendSticker([
+    		'chat_id' => $update->message->chat->id,
+    		'sticker' => "BQADBAADJgADs0NYB4RGrN0AATP4WwI" //non si può fare
+    		]);
+    }
+	else if(stripos($update->message->text, 'ciao') !== false)
+    {
+    	$response = $client->sendSticker([
+    		'chat_id' => $update->message->chat->id,
+    		'sticker' => "BQADBAADMAADs0NYB3sXUeq5oWLtAg" //ciao ragazzi
+    		]);
+    }
 	/*
 	else if( stripos($update->message->text, 'campanello') !== false)
     {
