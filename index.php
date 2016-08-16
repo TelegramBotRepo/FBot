@@ -116,7 +116,7 @@ try {
     		'sticker' => "BQADBAADMAADs0NYB3sXUeq5oWLtAg" //ciao ragazzi
     		]);
     }
-	else if(stripos($update->message->text, 'dio') !== false)
+	else if(stripos($update->message->text, 'ddio') !== false || stripos($update->message->text, ' dio') !== false)
     {
     	$response = $client->sendSticker([
     		'chat_id' => $update->message->chat->id,
