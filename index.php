@@ -21,14 +21,16 @@ require 'vendor/autoload.php';
 
 $client = new Zelenin\Telegram\Bot\Api('265001835:AAE6giEUaEwE8TdY38DPJ-NACy6roZL9T_Q'); // Set your access token
 $url = ''; // URL RSS feed
+$spamCounter = 0;
+$lastSender = "";
+
 $update = json_decode(file_get_contents('php://input'));
 
 //your app
 try {
 	
 	///////////////////////////////////////////////////////////SPAM EVENT//////////////////////////
-	$spamCounter = 0;
-	$lastSender = "";
+	
 	
 	if($update->message->from->id == $lastSender)
 	{
