@@ -67,6 +67,7 @@ try {
 		$spamCounter=0;
 	}
 	$lastSender = $update->message->from->id;
+	$lastSender = $update->message->text;
 	$sql = "UPDATE SpamTable SET lastUserId='$lastSender', spamCounter=$spamCounter WHERE 1";
 	
 	$conn->query($sql);
