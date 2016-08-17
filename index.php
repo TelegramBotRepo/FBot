@@ -246,7 +246,7 @@ try {
 	}
 	if($update->message->from->id == $lastSender)
 	{
-		if($spamCounter>=1)
+		if($spamCounter>=2)
 		{
 			$response = $client->sendSticker([
 				'chat_id' => $update->message->chat->id,
@@ -259,7 +259,7 @@ try {
 		
 	}
 	else{
-		$spamCounter=0;
+		$spamCounter=1;
 	}
 	$lastSender = $update->message->from->id;
 	$sql = "UPDATE SpamTable SET lastUserId='$lastSender', spamCounter=$spamCounter WHERE 1";
