@@ -36,41 +36,6 @@ $update = json_decode(file_get_contents('php://input'));
 //your app
 try {
 	
-	///////////////////////////////////////////////////////////SPAM EVENT//////////////////////////
-	
-	$sql = "SELECT lastUserId, spamCounter FROM SpamTable";
-	$result = $conn->query($sql);
-
-	if ($result->num_rows > 0) {
-		// output data of each row
-		while($row = $result->fetch_assoc()) {
-			$spamCounter = intVal($row["spamCounter"]);
-			$lastSender = $row["lastUserId"];
-		}
-	}
-	if($update->message->from->id == $lastSender)
-	{
-		if($spamCounter>=2)
-		{
-			$response = $client->sendSticker([
-				'chat_id' => $update->message->chat->id,
-				'sticker' => "BQADBAADHAADs0NYB8lR4Urhkp5LAg" //spam
-    		]);
-			$spamCounter=0;
-		}else{
-			$spamCounter++;
-		}
-		
-	}
-	else{
-		$spamCounter=0;
-	}
-	$lastSender = $update->message->from->id;
-	$sql = "UPDATE SpamTable SET lastUserId='$lastSender', spamCounter=$spamCounter WHERE 1";
-	
-	$conn->query($sql);
-	
-	
 	////////////////////////////////////////////////////////////////////////////////////////////STICKERS
 	
     if(stripos($update->message->text, 'perotto') !== false || stripos($update->message->text, 'minimo') !== false)
@@ -267,6 +232,40 @@ try {
 				]);	 
     }
 
+	///////////////////////////////////////////////////////////SPAM EVENT//////////////////////////
+	
+	$sql = "SELECT lastUserId, spamCounter FROM SpamTable";
+	$result = $conn->query($sql);
+
+	if ($result->num_rows > 0) {
+		// output data of each row
+		while($row = $result->fetch_assoc()) {
+			$spamCounter = intVal($row["spamCounter"]);
+			$lastSender = $row["lastUserId"];
+		}
+	}
+	if($update->message->from->id == $lastSender)
+	{
+		if($spamCounter>=1)
+		{
+			$response = $client->sendSticker([
+				'chat_id' => $update->message->chat->id,
+				'sticker' => "BQADBAADHAADs0NYB8lR4Urhkp5LAg" //spam
+    		]);
+			$spamCounter=0;
+		}else{
+			$spamCounter++;
+		}
+		
+	}
+	else{
+		$spamCounter=0;
+	}
+	$lastSender = $update->message->from->id;
+	$sql = "UPDATE SpamTable SET lastUserId='$lastSender', spamCounter=$spamCounter WHERE 1";
+	
+	$conn->query($sql);
+	
 	$conn->close();
 	
 } catch (\Zelenin\Telegram\Bot\NotOkException $e) {
