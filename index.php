@@ -200,8 +200,8 @@ try {
 			"Volete sentire una freddura? Iceberg..."
 		);
 		
-		$index = intVal(rand(0,count($$arrayBattute)));
-		$body =$$arrayBattute[$index];
+		$index = intVal(rand(0,count($arrayBattute)));
+		$body = $arrayBattute[$index];
 
 		$response = $client->sendMessage([
 					'chat_id' => $update->message->chat->id,
