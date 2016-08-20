@@ -165,7 +165,7 @@ try {
 		
 		$index = intVal(rand(0,count($arrayResult)));
 		$body =$arrayResult[$index];
-		 sleep(1);
+
 		$response = $client->sendMessage([
 					'chat_id' => $update->message->chat->id,
 					'text' => $body
