@@ -151,20 +151,23 @@ try {
 	
 	else if(stripos($update->message->text, 'mirco') !== false || stripos($update->message->text, 'triste') !== false)
     {
-		$sql = "SELECT body FROM Battute ORDER BY RAND() LIMIT 1";
+		$sql = "SELECT body FROM Battute";
 		$result = $conn->query($sql);
-
+		
+		$arrayResult = array();
+		
 		if ($result->num_rows > 0) {
 			// output data of each row
 			while($row = $result->fetch_assoc()) {
-				$body = $row["body"];
-				
+				array_push($arrayResult, $row["body"]);
 			}
 		}
 		
+		$index = intVal(rand(0,count($arrayResult)));
+		
 		$response = $client->sendMessage([
 					'chat_id' => $update->message->chat->id,
-					'text' => $body
+					'text' => $arrayResult[$index];
 				]);	 
     }
 	else if(stripos($update->message->text, 'vado') !== false)
@@ -200,11 +203,11 @@ try {
 		stripos($update->message->text, 'computer') !== false ||
 		stripos($update->message->text, 'cpu') !== false ||
 		stripos($update->message->text, 'server') !== false ||
-		stripos($update->message->text, ' nas') !== false ||
+		stripos($update->message->text, ' nas ') !== false ||
 		stripos($update->message->text, 'database') !== false ||
-		stripos($update->message->text, 'ram') !== false ||
-		stripos($update->message->text, 'hard') !== false ||
-		stripos($update->message->text, 'ssd') !== false ||
+		stripos($update->message->text, ' ram ') !== false ||
+		stripos($update->message->text, ' hard ') !== false ||
+		stripos($update->message->text, ' ssd ') !== false ||
 		stripos($update->message->text, 'giga ') !== false ||
 		stripos($update->message->text, 'db') !== false ||
 		stripos($update->message->text, 'processore') !== false ||
