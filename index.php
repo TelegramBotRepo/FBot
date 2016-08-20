@@ -151,6 +151,7 @@ try {
 	
 	else if(stripos($update->message->text, 'mirco') !== false || stripos($update->message->text, 'triste') !== false)
     {
+		/*
 		$sql = "SELECT body FROM Battute";
 		$result = $conn->query($sql);
 		
@@ -162,9 +163,45 @@ try {
 				array_push($arrayResult, $row["body"]);
 			}
 		}
+		*/
 		
-		$index = intVal(rand(0,count($arrayResult)));
-		$body =$arrayResult[$index];
+		$arrayBattute = array(
+			"Questa mattina ho dovuto dare un’aspirina alla radio. Perchè? Non si sentiva bene!",
+			"Sai perchè Massimo è sempre in ritardo? Forse non ha l’orologio? No, perchè tutti dicono: 'Venite alle 9, massimo alle 9:10!'",
+			"Come si chiama il pesce che ha perso entrambi i genitori? Lo sc-orfano",
+			"Come si fa a far calmare un vegetariano? Lo sedano",
+			"Come si chiama il pesce che ha perso entrambi i genitori? Lo sc-orfano",
+			"Come si fa a far calmare un vegetariano? Lo sedano",
+			"Qual è il contrario di 'melodia'? Se-lo-tenga",
+			"Sai che mia nipote ha 15 anni? Quindi? 'Cenne'",
+			"Cosa vanno a fare le farfalle a San Remo? Vanno a battere Leali",
+			"Qual è il locale frequentato da Messi, Neymar e Suarez? Il Bar Cellona",
+			"Perchè una bottiglia di vino va all’inferno? Perchè è d’annata",
+			"Cosa fa un Carabiniere con un cucchiaino fuori dal casello autostradale? Imbocca l’autostrada",
+			"Se hai un problema chiedi sempre al tuo palazzo. Lui ha sempre un piano per te",
+			"Qual è lo Stato più caldo del Mondo? Il Sudan",
+			"Cosa si dice ad un albero quando è molto triste? Non ti abbattere",
+			"Quando sei nato ti volevo chiamare Mozart. Ma è brutto. E’ vero, però suona bene",
+			"Lo sai perchè dire buongiorno e buonasera fa bene? Perchè è buona educazione? No, perchè è salutare",
+			"Lo sai cosa dicono due pannocchie innamorate? Non ci lasceremo mais",
+			"Vedi anche tu la mela che ho in testa? No? Ok, allora è solo il frutto della mia immaginazione",
+			"Sai quali sono i fiori che non hanno nessun amico con cui uscire? I girasoli",
+			"Sai perchè in passato non ero in grado di fare le cotolette? Perchè sbagliando s’impana",
+			"I panettieri sono delle persone orribili. Perchè? Perchè se li conosci lieviti",
+			"Uno specchio va da un altro e gli chiede: 'cosa fai qui seduto tutto solo e pensieroso?' l'altro gli risponde: 'no niente stavo solo riflettendo'.",
+			"Cerco.tecnico.informatico.per.riparare.la.mia.sbarra.spaziatrice!",
+			"Scambio dolcissimo doberman con mano ortopedica!",
+			"Ragazzo timido cerca......bhe ecco.....non importa!",
+			"Un signore al portinaio: 'Questo ascensore risale ai primi del novecento?' e il portinaio: 'no, arriva solo al settimo piano'.",
+			"- Com'è andata la cena in quel ristorante all'aperto? -Male, si è messo a piovere e ho impiegato un'ora per finire il brodo!",
+			"Sapete qual'è la barzelletta più antipatica? .... non ve la dico, non ve la dico!",
+			"Un fiorentino va dal fruttivendolo e dice: 'Un caco' e il fruttivendolo risponde: 'la si purghi'.",
+			"Il tampax al preservativo: 'se ti rompi andiamo tutti e due in pensione!'",
+			"Volete sentire una freddura? Iceberg..."
+		):
+		
+		$index = intVal(rand(0,count($$arrayBattute)));
+		$body =$$arrayBattute[$index];
 
 		$response = $client->sendMessage([
 					'chat_id' => $update->message->chat->id,
