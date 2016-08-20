@@ -198,7 +198,7 @@ try {
 			"Un fiorentino va dal fruttivendolo e dice: 'Un caco' e il fruttivendolo risponde: 'la si purghi'.",
 			"Il tampax al preservativo: 'se ti rompi andiamo tutti e due in pensione!'",
 			"Volete sentire una freddura? Iceberg..."
-		):
+		);
 		
 		$index = intVal(rand(0,count($$arrayBattute)));
 		$body =$$arrayBattute[$index];
