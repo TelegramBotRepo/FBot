@@ -150,21 +150,7 @@ try {
 	///////////////////////////////////////////////////////////////////////////////////TESTI
 	
 	else if(stripos($update->message->text, 'mirco') !== false || stripos($update->message->text, 'triste') !== false)
-    {
-		/*
-		$sql = "SELECT body FROM Battute";
-		$result = $conn->query($sql);
-		
-		$arrayResult = array();
-		
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				array_push($arrayResult, $row["body"]);
-			}
-		}
-		*/
-		
+    {		
 		$arrayBattute = array(
 			"Questa mattina ho dovuto dare un’aspirina alla radio. Perchè? Non si sentiva bene!",
 			"Sai perchè Massimo è sempre in ritardo? Forse non ha l’orologio? No, perchè tutti dicono: 'Venite alle 9, massimo alle 9:10!'",
@@ -201,11 +187,10 @@ try {
 		);
 		
 		$index = intVal(rand(0,count($arrayBattute)));
-		$body = $arrayBattute[$index];
 
 		$response = $client->sendMessage([
 					'chat_id' => $update->message->chat->id,
-					'text' => $body
+					'text' => $arrayBattute[$index]
 				]);	 
     }
 	else if(stripos($update->message->text, 'vado') !== false)
@@ -244,8 +229,8 @@ try {
 		stripos($update->message->text, ' nas ') !== false ||
 		stripos($update->message->text, 'database') !== false ||
 		stripos($update->message->text, ' ram ') !== false ||
-		stripos($update->message->text, ' hard ') !== false ||
-		stripos($update->message->text, ' ssd ') !== false ||
+		stripos($update->message->text, ' hard') !== false ||
+		stripos($update->message->text, 'ssd') !== false ||
 		stripos($update->message->text, 'giga ') !== false ||
 		stripos($update->message->text, 'db') !== false ||
 		stripos($update->message->text, 'processore') !== false ||
