@@ -164,10 +164,11 @@ try {
 		}
 		
 		$index = intVal(rand(0,count($arrayResult)));
+		$body =$arrayResult[$index];
 		
 		$response = $client->sendMessage([
 					'chat_id' => $update->message->chat->id,
-					'text' => $arrayResult[$index];
+					'text' => $body
 				]);	 
     }
 	else if(stripos($update->message->text, 'vado') !== false)
