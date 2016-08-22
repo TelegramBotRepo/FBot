@@ -193,7 +193,7 @@ try {
 					'text' => $arrayBattute[$index]
 				]);	 
     }
-	else if(stripos($update->message->text, 'vado') !== false)
+	else if(stripos($update->message->text, 'vado') !== false || stripos($update->message->text, ' vai') !== false)
     {	
 		$response = $client->sendMessage([
 					'chat_id' => $update->message->chat->id,
@@ -272,14 +272,23 @@ try {
 	}
 	if($update->message->from->id == $lastSender)
 	{
-		if($spamCounter>=2)
+		if($spamCounter>=2 && $update->message->from->id == '241832493')
 		{
 			$response = $client->sendSticker([
 				'chat_id' => $update->message->chat->id,
 				'sticker' => "BQADBAADHAADs0NYB8lR4Urhkp5LAg" //spam
     		]);
 			$spamCounter=0;
-		}else{
+		}
+		else if($spamCounter>=4 && $update->message->from->id != '241832493')
+		{
+			$response = $client->sendSticker([
+				'chat_id' => $update->message->chat->id,
+				'sticker' => "BQADBAADHAADs0NYB8lR4Urhkp5LAg" //spam
+    		]);
+			$spamCounter=0;
+		}
+		else{
 			$spamCounter++;
 		}
 		
