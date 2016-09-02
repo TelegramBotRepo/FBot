@@ -95,12 +95,26 @@ try {
     		'sticker' => "BQADBAADGgADs0NYBxXUnFUZnhMbAg" //keepcalm
     		]);
     }
-	else if(stripos($update->message->text, 'pausa') !== false)
+	else if(stripos($update->message->text, 'pausa') !== false || stripos($update->message->text, 'coffee') !== false || stripos($update->message->text, 'caffè') !== false)
     {
-    	$response = $client->sendSticker([
+    	
+		$index = intVal(rand(1,2));
+		
+		switch($index){
+			case 1:
+				$sticker = "BQADBAADPwADs0NYBy2cTGydbZdTAg"; //pierpausa
+				break;
+			case 2:
+				$sticker = "BQADBAADFAADs0NYB3egiWxpZ_zLAg"; //koffing
+				break;
+	
+		}
+		
+		$response = $client->sendSticker([
     		'chat_id' => $update->message->chat->id,
-    		'sticker' => "BQADBAADFAADs0NYB3egiWxpZ_zLAg" //coffee
+    		'sticker' => $sticker
     		]);
+			
     }
 	else if(stripos($update->message->text, 'aiuto') !== false  || stripos($update->message->text, 'alessio') !== false || stripos($update->message->text, 'una mano') !== false)
     {
@@ -125,7 +139,13 @@ try {
 		  'caption' => 'Quanta fretta, ma dove corri, dove vai? Se ci ascolti per un momento, capirai, lui è il gatto, ed io la volpe,stiamo in società, di noi ti puoi fidar.'
 		]);
     }
-	
+	else if(stripos($update->message->text, 'aspetta') !== false  || stripos($update->message->text, 'non posso') !== false)
+    {
+    	$response = $client->sendSticker([
+    		'chat_id' => $update->message->chat->id,
+    		'sticker' => "BQADBAADQQADs0NYBxrDjLn6vRtdAg" //adesso non posso
+    		]);
+    }
 	
 	////////////////////////////////////////////////////////////////////////////////////////VIDEO
 	
