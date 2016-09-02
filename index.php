@@ -109,6 +109,23 @@ try {
     		'sticker' => "BQADBAADKgADs0NYB4q4U1oCTvRXAg" //need him
     		]);
     }
+	else if(stripos($update->message->text, 'fica') !== false ||  stripos($update->message->text, 'figa') !== false)
+    {
+    	$response = $client->sendPhoto([
+		  'chat_id' => $update->message->chat->id,
+		  'photo' => 'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/13096073_1118751214835384_1011900803036701989_n.jpg?oh=b9db43f7ad21a2fa93477353ca25f758&oe=585199BA', 
+		  'caption' => ''
+		]);
+    }
+	else if(stripos($update->message->text, 'aiaff') !== false )
+    {
+    	$response = $client->sendPhoto([
+		  'chat_id' => $update->message->chat->id,
+		  'photo' => 'http://www.storiaradiotv.it/EDOARDO%20BENNATO.jpg', 
+		  'caption' => 'uanta fretta, ma dove corri, dove vai? Se ci ascolti per un momento, capirai, lui è il gatto, ed io la volpe,stiamo in società, di noi ti puoi fidar.'
+		]);
+    }
+	
 	
 	////////////////////////////////////////////////////////////////////////////////////////VIDEO
 	
