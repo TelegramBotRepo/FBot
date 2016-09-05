@@ -123,14 +123,6 @@ try {
     		'sticker' => "BQADBAADKgADs0NYB4q4U1oCTvRXAg" //need him
     		]);
     }
-	else if(stripos($update->message->text, 'fica') !== false ||  stripos($update->message->text, 'figa') !== false)
-    {
-    	$response = $client->sendPhoto([
-		  'chat_id' => $update->message->chat->id,
-		  'photo' => 'https://s9.postimg.org/epntgw2sv/13096073_1118751214835384_1011900803036701989_n.jpg', 
-		  'caption' => ';)'
-		]);
-    }
 	else if(stripos($update->message->text, 'aiaff') !== false )
     {
     	$response = $client->sendPhoto([
