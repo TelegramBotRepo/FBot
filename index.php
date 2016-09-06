@@ -243,7 +243,7 @@ try {
 					'text' => "Release?? Io prendo ferie..."
 				]);	 
     }
-	else if(stripos($update->message->text, 'fretta') !== false)
+	else if(stripos($update->message->text, 'fretta') !== false || stripos($update->message->text, 'ansia') !== false)
     {	
 		$response = $client->sendMessage([
 					'chat_id' => $update->message->chat->id,
