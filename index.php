@@ -131,7 +131,7 @@ try {
 		  'caption' => 'Quanta fretta, ma dove corri, dove vai? Se ci ascolti per un momento, capirai, lui è il gatto, ed io la volpe,stiamo in società, di noi ti puoi fidar.'
 		]);
     }
-	else if(stripos($update->message->text, 'aspetta') !== false  || stripos($update->message->text, 'non posso') !== false)
+	else if(stripos($update->message->text, 'aspetta ') !== false  || stripos($update->message->text, 'non posso') !== false)
     {
     	$response = $client->sendSticker([
     		'chat_id' => $update->message->chat->id,
@@ -309,7 +309,7 @@ try {
     		]);
 			$spamCounter=0;
 		}
-		else if($spamCounter>=4 && $update->message->from->id != '241832493')
+		if($spamCounter>=4 && $update->message->from->id != '241832493')
 		{
 			$response = $client->sendSticker([
 				'chat_id' => $update->message->chat->id,
