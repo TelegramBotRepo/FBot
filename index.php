@@ -123,6 +123,29 @@ try {
     		'sticker' => "BQADBAADKgADs0NYB4q4U1oCTvRXAg" //need him
     		]);
     }
+	else if(stripos($update->message->text, 'kris') !== false)
+    {
+		
+		$index = intVal(rand(1,3));
+		
+		switch($index){
+			case 1:
+				$text = "BQADBAADTAADs0NYB39dUowwmbM2Ag"; //catena
+				break;
+			case 2:
+				$text = "BQADBAADTgADs0NYB3jtsJlprF9iAg"; //dove uomo
+				break;
+			case 3:
+				$text = "BQADBAADUAADs0NYBzZeYWJqswMiAg"; //gnioca
+				break;
+			
+		}
+		
+    	$response = $client->sendSticker([
+    		'chat_id' => $update->message->chat->id,
+    		'sticker' => $text 
+    		]);
+    }
 	else if(stripos($update->message->text, 'aiaff') !== false )
     {
     	$response = $client->sendPhoto([
