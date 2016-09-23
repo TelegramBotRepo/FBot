@@ -273,35 +273,6 @@ try {
 					'text' => "Non ti preoccupare, andiamo in produzione ieri..."
 				]);	 
     }
-	else if(
-		stripos($update->message->text, 'pc') !== false ||
-		stripos($update->message->text, 'computer') !== false ||
-		stripos($update->message->text, 'cpu') !== false ||
-		stripos($update->message->text, 'server') !== false ||
-		stripos($update->message->text, ' nas ') !== false ||
-		stripos($update->message->text, 'database') !== false ||
-		stripos($update->message->text, ' ram ') !== false ||
-		stripos($update->message->text, ' hard') !== false ||
-		stripos($update->message->text, 'ssd') !== false ||
-		stripos($update->message->text, 'giga ') !== false ||
-		stripos($update->message->text, 'db') !== false ||
-		stripos($update->message->text, 'processore') !== false ||
-		stripos($update->message->text, 'internet') !== false ||
-		stripos($update->message->text, 'windows') !== false ||
-		stripos($update->message->text, 'explorer') !== false ||
-		stripos($update->message->text, 'chrome') !== false ||
-		stripos($update->message->text, 'cache') !== false ||
-		stripos($update->message->text, 'memory') !== false ||
-		stripos($update->message->text, 'wifi') !== false ||
-		stripos($update->message->text, 'password') !== false ||
-		stripos($update->message->text, 'query') !== false 
-		)
-    {	
-		$response = $client->sendMessage([
-					'chat_id' => $update->message->chat->id,
-					'text' => "Caspita, tu devi essere un Hacker!"
-				]);	 
-    }
 	else if(stripos($update->message->text, 'ux') !== false || stripos($update->message->text, 'experience') !== false || stripos($update->message->text, 'iannas') !== false)
     {	
 		$response = $client->sendMessage([
