@@ -280,6 +280,20 @@ try {
 					'text' => "Prima regola della User Experience: Non parlare mai della User Experience."
 				]);	 
     }
+	else if(stripos($update->message->text, 'lungo') !== false || stripos($update->message->text, 'duro') !== false)
+    {	
+		$response = $client->sendMessage([
+					'chat_id' => $update->message->chat->id,
+					'text' => "Chissà quante donne te l'avranno detto..."
+				]);	 
+    }
+	else if(stripos($update->message->text, 'buco') !== false)
+    {	
+		$response = $client->sendMessage([
+					'chat_id' => $update->message->chat->id,
+					'text' => "Chissà a quante donne lo avrai già detto..."
+				]);	 
+    }
 
 	///////////////////////////////////////////////////////////SPAM EVENT//////////////////////////
 	
