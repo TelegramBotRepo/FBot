@@ -154,6 +154,22 @@ try {
 		  'caption' => 'Quanta fretta, ma dove corri, dove vai? Se ci ascolti per un momento, capirai, lui è il gatto, ed io la volpe,stiamo in società, di noi ti puoi fidar.'
 		]);
     }
+	else if(stripos($update->message->text, 'ema') !== false || stripos($update->message->text, 'wordpress') !== false || stripos($update->message->text, 'app2check') !== false || stripos($update->message->text, 'a2c') !== false)
+    {
+    	$response = $client->sendPhoto([
+		  'chat_id' => $update->message->chat->id,
+		  'photo' => 'https://media.tenor.co/images/bff3fb331f418b5d3f7747dc45ac44b6/tenor.gif', 
+		  'caption' => ''
+		]);
+    }
+	else if(stripos($update->message->text, 'ritardo') !== false )
+    {
+    	$response = $client->sendPhoto([
+		  'chat_id' => $update->message->chat->id,
+		  'photo' => 'http://1.bp.blogspot.com/-hojr7QVjNqo/TtpVyTx7apI/AAAAAAAAAH4/_4RScqSlJtk/s1600/Persona-down-2.jpg', 
+		  'caption' => ''
+		]);
+    }
 	else if(stripos($update->message->text, 'aspetta ') !== false  || stripos($update->message->text, 'non posso') !== false)
     {
     	$response = $client->sendSticker([
@@ -243,13 +259,6 @@ try {
 		$response = $client->sendMessage([
 					'chat_id' => $update->message->chat->id,
 					'text' => $arrayBattute[$index]
-				]);	 
-    }
-	else if(stripos($update->message->text, 'vado') !== false || stripos($update->message->text, ' vai') !== false)
-    {	
-		$response = $client->sendMessage([
-					'chat_id' => $update->message->chat->id,
-					'text' => "Ma dove vai?? Sono solo le 18..."
 				]);	 
     }
 	else if(stripos($update->message->text, 'ancora in ufficio') !== false)
