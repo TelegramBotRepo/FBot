@@ -158,7 +158,7 @@ try {
     {
     	$response = $client->sendDocument([
 		  'chat_id' => $update->message->chat->id,
-		  'photo' => 'https://media.tenor.co/images/bff3fb331f418b5d3f7747dc45ac44b6/tenor.gif', 
+		  'document' => 'https://media.tenor.co/images/bff3fb331f418b5d3f7747dc45ac44b6/tenor.gif', 
 		  'caption' => ''
 		]);
     }
