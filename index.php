@@ -156,7 +156,7 @@ try {
     }
 	else if(stripos($update->message->text, 'ema') !== false || stripos($update->message->text, 'wordpress') !== false || stripos($update->message->text, 'app2check') !== false || stripos($update->message->text, 'a2c') !== false)
     {
-    	$response = $client->sendPhoto([
+    	$response = $client->sendDocument([
 		  'chat_id' => $update->message->chat->id,
 		  'photo' => 'https://media.tenor.co/images/bff3fb331f418b5d3f7747dc45ac44b6/tenor.gif', 
 		  'caption' => ''
