@@ -162,14 +162,6 @@ try {
 		  'caption' => ''
 		]);
     }
-	else if(stripos($update->message->text, 'ritardo') !== false )
-    {
-    	$response = $client->sendPhoto([
-		  'chat_id' => $update->message->chat->id,
-		  'photo' => 'http://1.bp.blogspot.com/-hojr7QVjNqo/TtpVyTx7apI/AAAAAAAAAH4/_4RScqSlJtk/s1600/Persona-down-2.jpg', 
-		  'caption' => ''
-		]);
-    }
 	else if(stripos($update->message->text, 'aspetta ') !== false  || stripos($update->message->text, 'non posso') !== false)
     {
     	$response = $client->sendSticker([
