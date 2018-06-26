@@ -154,7 +154,7 @@ try {
 		  'caption' => 'Quanta fretta, ma dove corri, dove vai? Se ci ascolti per un momento, capirai, lui è il gatto, ed io la volpe,stiamo in società, di noi ti puoi fidar.'
 		]);
     }
-	else if(stripos($update->message->text, 'ema') !== false || stripos($update->message->text, 'wordpress') !== false || stripos($update->message->text, 'app2check') !== false || stripos($update->message->text, 'a2c') !== false)
+	else if(stripos($update->message->text, ' ema ') !== false || stripos($update->message->text, 'wordpress') !== false || stripos($update->message->text, 'app2check') !== false || stripos($update->message->text, 'a2c') !== false)
     {
     	$response = $client->sendDocument([
 		  'chat_id' => $update->message->chat->id,
